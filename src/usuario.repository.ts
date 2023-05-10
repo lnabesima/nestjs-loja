@@ -3,6 +3,9 @@ export class UsuarioRepository {
 
   async salvar(usuario): Promise<void> {
     this.usuarios.push(usuario);
-    console.log(this.usuarios);
+  }
+
+  async listar(): Promise<any[]> {
+    return this.usuarios;
   }
 }
