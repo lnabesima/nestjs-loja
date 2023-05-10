@@ -3,16 +3,16 @@ import { UsuarioRepository } from './usuario.repository';
 
 @Controller('/usuarios')
 export class UsuarioController {
-  private UsuarioRepository: UsuarioRepository = new UsuarioRepository();
+  constructor(private usuarioRepository: UsuarioRepository) {}
 
   @Post()
   async criaUsuario(@Body() dadosDoUsuario): Promise<any> {
-    this.UsuarioRepository.salvar(dadosDoUsuario);
+    await this.usuarioRepository.salvar(dadosDoUsuario);
     return dadosDoUsuario;
   }
 
   @Get()
   async listaUsuarios(): Promise<any[]> {
-    return this.UsuarioRepository.listar();
+    return this.usuarioRepository.listar();
   }
 }
