@@ -11,4 +11,12 @@ export class UsuarioRepository {
   async listar(): Promise<any[]> {
     return this.usuarios;
   }
+
+  async existeEmail(email: string): Promise<boolean> {
+    const possivelUsuario = this.usuarios.find(
+      (usuario) => usuario.email === email,
+    );
+
+    return possivelUsuario !== undefined;
+  }
 }
