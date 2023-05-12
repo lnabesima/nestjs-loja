@@ -7,12 +7,17 @@ import {
   IsNotEmpty,
   IsNumber,
   IsPositive,
+  IsUUID,
+  isUUID,
   MaxLength,
   ValidateNested,
 } from 'class-validator';
 import { Type } from 'class-transformer';
 
 export class CriaProdutoDTO {
+  @IsUUID(4, { message: 'O ID do usuário precisa ser informado.' })
+  usuarioId: string;
+
   @IsNotEmpty({ message: 'O nome do produto não pode ser vazio.' })
   nome: string;
   @IsNumber(
